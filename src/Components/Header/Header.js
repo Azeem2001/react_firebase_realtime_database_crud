@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Header.css";
 const Header = () => {
   const [activeTab, setActiveTab] = useState("Home");
   const location = useLocation();
+  const navigate = useNavigate();
   useEffect(() => {
     if (location.pathname === "/") {
       setActiveTab("Home");
@@ -16,7 +17,9 @@ const Header = () => {
 
   return (
     <div className="header">
-      <p className="logo">Contact App</p>
+      <p className="logo" onClick={() => navigate("/")}>
+        Contact App
+      </p>
       <div className="header-right">
         <Link to="/">
           <p
